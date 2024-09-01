@@ -1,0 +1,258 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header {
+    background-color: #f1f1f1;
+    padding: 20px 40px;
+    width: 200px;
+    height: 100vh;
+}
+
+
+.edit-profile-button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 8px 16px;
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+    background-color: #004d00;
+}
+
+h1.brand {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5em;
+    margin: 0;
+    color: #006400;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px; 
+}
+
+nav ul {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 35px; 
+    margin-left: auto;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav li.active {
+    background-color: #f1f1f1;
+}
+nav li.active a{
+    outline: none;
+}
+nav a {
+    text-decoration: none;
+    color: #006400;
+    font-size: 0.9em;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 40px; 
+}
+
+.profile-info {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2.0em;
+    color: #006400;
+}
+
+.profile-info p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5em;
+    color: #666;
+}
+
+.achievements {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.achievements h2{
+    color: #006400;
+}
+.achievement {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #006400;
+}
+
+.achievement img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.achievement p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1em;
+    color: #333;
+}
+
+.activity-feed {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 20px;
+    color: #006400;
+}
+
+.activity-feed h2 {
+    color: #006400;
+}
+
+.activity-item {
+    margin-bottom: 10px;
+}
+
+.activity-item p {
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.activity-time {
+    color: #666;
+    font-size: 0.9em;
+}
+
+
+.about-me {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 20px;  
+}
+
+.about-me h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #006400; 
+    margin-bottom: 10px; 
+}
+
+.about-me p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: #666; 
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: #006400;
+    font-size: 0.9em;
+    margin-right: 10px; 
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+.plant-care-journal {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.plant-care-journal h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333;
+}
+
+.sidebar {
+    background-color: #f1f1f1;
+    padding: 20px;
+    width: 200px;
+}
+
+.plant-care-journal h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2em;
+    color: #006400;
+    margin-bottom: 10px;
+}
+
+#journal-form {
+    margin-bottom: 20px;
+}
+
+#journal-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#journal-form input[type="text"],
+#journal-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#journal-form button {
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#journal-form button:hover {
+    background-color: #004d00;
+}
+
+#journal-entries {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.journal-entry {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.journal-entry p {
+    margin: 0;
+}

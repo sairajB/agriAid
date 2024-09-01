@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAid Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f8f0;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .sidebar-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .sidebar-logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+        .sidebar-link {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            color: #2e8b57;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .profile-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .profile-details h2 {
+            color: #2e8b57;
+            margin-bottom: 0.5rem;
+        }
+        .edit-profile {
+            background-color: #2e8b57;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        .edit-profile:hover {
+            background-color: #3cb371;
+        }
+        .section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h3 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+        .achievements, .activity-feed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .achievement, .activity-item {
+            display: flex;
+            align-items: center;
+            background-color: #f0f8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        .achievement img, .activity-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+        .activity-time {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: auto;
+        }
+        .social-links a {
+            color: #2e8b57;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .plant-care-journal input, .plant-care-journal textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .plant-care-journal button {
+            background-color: #2e8b57;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .plant-care-journal button:hover {
+            background-color: #3cb371;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo">
+            <span>AgriAid</span>
+        </div>
+        <a href="{{ url_for('profile') }}" class="sidebar-link active">Profile</a>
+        <a href="{{ url_for('market') }}" class="sidebar-link">Market</a>
+        <a href="#" class="sidebar-link">Settings</a>
+        <div class="sidebar-footer">
+            <a href="{{ url_for('logout') }}" class="sidebar-link">Logout</a>
+        </div>
+    </aside>
+    <main class="main-content">
+        <section class="profile-info section">
+            <img src="{{ url_for('static', filename='images/farmer.svg') }}" alt="Profile Picture">
+            <div class="profile-details">
+                <h2>John Doe</h2>
+                <p>Plant enthusiast</p>
+                <button class="edit-profile">Edit Profile</button>
+            </div>
+        </section>
+        <section class="achievements section">
+            <h3>Achievements</h3>
+            <div class="achievement">
+                <img src="{{ url_for('static', filename='images/thumb.svg') }}" alt="Green Thumb">
+                <span>Green Thumb</span>
+            </div>
+            <div class="achievement">
+                <img src="{{ url_for('static', filename='images/water_can.svg') }}" alt="Master Waterer">
+                <span>Master Waterer</span>
+            </div>
+        </section>
+        <section class="activity-feed section">
+            <h3>Activity Feed</h3>
+            <div class="activity-item">
+                <span>Watered the plants</span>
+                <span class="activity-time">2 hours ago</span>
+            </div>
+            <div class="activity-item">
+                <span>Added a new plant</span>
+                <span class="activity-time">1 day ago</span>
+            </div>
+        </section>
+        <section class="about-me section">
+            <h3>About Me</h3>
+            <p>This is the About Me Section. Edit with EDIT PROFILE button</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com">Facebook</a>
+                <a href="https://www.twitter.com">Twitter</a>
+                <a href="https://www.instagram.com">Instagram</a>
+            </div>
+        </section>
+        <section class="plant-care-journal section">
+            <h3>Plant Care Journal</h3>
+            <form id="journal-form">
+                <input type="text" id="plant-name" placeholder="Plant Name" required>
+                <textarea id="activity" placeholder="Activity" required></textarea>
+                <button type="submit">Add Entry</button>
+            </form>
+            <div id="journal-entries"></div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('journal-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const plantName = document.getElementById('plant-name').value;
+            const activity = document.getElementById('activity').value;
+            const entry = document.createElement('div');
+            entry.innerHTML = `<strong>${plantName}</strong>: ${activity}`;
+            document.getElementById('journal-entries').prepend(entry);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

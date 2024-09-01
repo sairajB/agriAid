@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAid Dashboard</title>
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Other CSS Links -->
+    <style>
+        :root {
+            --primary-color: #2d6a4f;
+            --secondary-color: #40916c;
+            --background-color: #d8f3dc;
+            --text-color: #1b4332;
+            --card-background: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2340916c' fill-opacity='0.1'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .logo-text:hover {
+            text-decoration: underline;
+            color: greenyellow;
+        }
+        
+        .sidebar-menu {
+            list-style-type: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+        
+        .sidebar-menu a:hover {
+            color: var(--background-color);
+        }
+        
+        .sidebar-menu i {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .logout {
+            margin-top: auto;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .plant-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .supplement {
+            text-align: center;
+        }
+        
+        .supplement img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo">
+                <a href="/main" class="logo-text">AgriAid</a>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="/profile">
+                        <i class="bi bi-person"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="/market">
+                        <i class="bi bi-shop"></i> Market
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="logout">
+                <a href="/login" class="btn">Logout</a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <h1>{{title}} 🍂</h1>
+            </header>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <img src="{{image_url}}" alt="{{title}}" class="plant-image">
+                </div>
+                
+                <div>
+                    <div class="card">
+                        <h2>{% if pred in [3, 5, 7, 11, 15, 18, 20, 23, 24, 25, 28, 38] %}Tips to Grow Healthy Plants:{% else %}Brief Description:{% endif %}</h2>
+                        <p>{{desc}}</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>{% if pred in [3, 5, 7, 11, 15, 18, 20, 23, 24, 25, 28, 38] %}Benefits:{% else %}Prevent This Plant Disease By Following These Steps:{% endif %}</h2>
+                        <p>{{prevent}}</p>
+                    </div>
+                </div>
+                
+                {% if pred != 4 %}
+                <div class="card supplement">
+                    <h2>{% if pred in [3, 5, 7, 11, 15, 18, 20, 23, 24, 25, 28, 38] %}Fertilizer:{% else %}Supplements:{% endif %}</h2>
+                    <img src="{{simage}}" alt="{{sname}}">
+                    <h3>{{sname}}</h3>
+                    <button class="btn">Buy Product</button>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>
