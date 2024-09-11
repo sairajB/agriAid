@@ -5,171 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgriAid Signup</title>
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
             font-family: Arial, sans-serif;
         }
-        body {
-            background-color: #f0f8f0;
-            min-height: 100vh;
+        .main {
+            position: relative;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1rem 2rem;
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2300ff00" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>') no-repeat center center;
+            background-size: contain;
+            opacity: 0.7;
+        }
+        .header {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.707);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.162);
         }
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-        }
-        .logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .logo span {
+            color: #333;
             font-size: 1.5rem;
             font-weight: bold;
-            color: #2e8b57;
         }
-        nav a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s ease;
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
         }
-        nav a:hover {
-            color: #2e8b57;
-        }
-        main {
-            flex-grow: 1;
+        .nav-links {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            gap: 1rem;
         }
-        main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="%232e8b57" stroke-width="2"/></svg>') repeat;
-            opacity: 0.1;
-            z-index: -1;
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: #43cea2;
         }
         .signup-container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            width: 100%;
-            max-width: 400px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2.5rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #2e8b57;
+        .signup-container h1 {
             text-align: center;
+            color: #333;
             margin-bottom: 1.5rem;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
+            font-size: 2rem;
         }
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
-        input {
+        .form-group input {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            box-sizing: border-box;
         }
-        input:focus {
-            outline: none;
-            border-color: #2e8b57;
-        }
-        button {
-            background-color: #2e8b57;
-            color: #ffffff;
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #43cea2;
+            color: white;
             border: none;
             border-radius: 4px;
-            padding: 0.75rem;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        button:hover {
-            background-color: #3cb371;
+        button[type="submit"]:hover {
+            background-color: #3ab28a;
         }
         .login-link {
+            margin-top: 1.5rem;
             text-align: center;
-            margin-top: 1rem;
+            font-size: 0.9rem;
         }
         .login-link a {
-            color: #2e8b57;
+            color: #185a9d;
             text-decoration: none;
+            font-weight: bold;
         }
         .login-link a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem;
+            }
+            .nav-links {
+                margin-top: 0.5rem;
+            }
+            .signup-container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo">
-            <span>AgriAid</span>
-        </a>
-        <nav>
-            <a href="/#features" class="hover:text-green-600">Features</a>
-            <a href="/#contact" class="hover:text-green-600">Contact Us</a>
-        </nav>
-    </header>
-    <main>
-        <div class="signup-container">
-            <h1>Signup</h1>
+    <div class="main">
+        <header class="header">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo">
+                AgriAid
+            </a>
+            <nav class="nav-links">
+                <a href="/#features">Features</a>
+                <a href="/#contact">Contact Us</a>
+            </nav>
+        </header>
+
+        <div class="signup-container" role="main">
+            <h1>AgriAid</h1>
+
             {% if errors %}
-                <ul class="errors">
+                <ul>
                     {% for error in errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
-            <form action="{{ url_for('signup') }}" method="post">
+
+            <form action="/signup" method="post">
                 <div class="form-group">
-                    <input type="text" id="firstname" name="firstname" placeholder="Firstname" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="text" id="lastname" name="lastname" placeholder="Lastname" required>
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat Password" required>
+                    <input type="tel" name="phone" placeholder="Phone Number (optional)">
                 </div>
-                <button type="submit">Register</button>
+
+                <button type="submit">Create Account</button>
             </form>
+
             <div class="login-link">
-                Already Registered? <a href="/login">Login Here</a>
+                Already have an account? <a href="/login">Log In</a>
             </div>
         </div>
-    </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            leaf.style.left = Math.random() * 100 + '%';
+            leaf.style.top = '-50px';
+            document.querySelector('.main').appendChild(leaf);
+            gsap.to(leaf, {
+                y: '100vh',
+                x: (Math.random() - 0.5) * 200,
+                rotation: Math.random() * 360,
+                duration: Math.random() * 5 + 5,
+                ease: 'none',
+                onComplete: () => {
+                    leaf.remove();
+                    createLeaf();
+                }
+            });
+        }
+        // Create multiple leaves
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createLeaf, i * 500);
+        }
+    </script>
 </body>
 </html>
