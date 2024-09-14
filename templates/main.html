@@ -1,259 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriAid - Detect Disease</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            height: 100%;
-            overflow: hidden;
-        }
-        .wrapper {
-            display: flex;
-            height: 100%;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        .logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .logo h1 {
-            font-size: 24px;
-            margin: 0;
-        }
-        .sidebar-link {
-            color: #ecf0f1;
-            text-decoration: none;
-            padding: 10px 0;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidebar-link:hover {
-            color: #3498db;
-        }
-        .sidebar-footer {
-            margin-top: auto;
-        }
-        .main {
-            flex-grow: 1;
-            background: linear-gradient(135deg, #43cea2, #185a9d);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .drop-zone {
-            border: 2px dashed #ffffff;
-            border-radius: 20px;
-            width: 300px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s;
-            background-color: rgba(255, 255, 255, 0.1);
-            z-index: 10;
-            position: relative;
-        }
-        .drop-zone:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .drop-zone__prompt {
-            color: #ffffff;
-            font-size: 18px;
-            text-align: center;
-        }
-        .drop-zone__input {
-            display: none;
-        }
-        .drop-zone__thumb {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: #cccccc;
-            background-size: cover;
-            position: relative;
-        }
-        .drop-zone__thumb::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 5px 0;
-            color: #ffffff;
-            background: rgba(0, 0, 0, 0.75);
-            font-size: 14px;
-            text-align: center;
-        }
-        .detect-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #33b7a3;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 10;
-        }
-        .logo-text {
-    color: inherit; /* Inherit color from parent or set to your desired color */
-    text-decoration: none; /* Remove underline */
-}
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        height: 100%;
+        overflow: hidden;
+      }
+      .wrapper {
+        display: flex;
+        height: 100%;
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .logo img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+      .logo h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+      .sidebar-link {
+        color: #ecf0f1;
+        text-decoration: none;
+        padding: 10px 0;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar-link:hover {
+        color: #3498db;
+      }
+      .sidebar-footer {
+        margin-top: auto;
+      }
+      .main {
+        flex-grow: 1;
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .drop-zone {
+        border: 2px dashed #ffffff;
+        border-radius: 20px;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+        background-color: rgba(255, 255, 255, 0.1);
+        z-index: 10;
+        position: relative;
+      }
+      .drop-zone:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .drop-zone__prompt {
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+      }
+      .drop-zone__input {
+        display: none;
+      }
+      .drop-zone__thumb {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #cccccc;
+        background-size: cover;
+        position: relative;
+      }
+      .drop-zone__thumb::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 0;
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.75);
+        font-size: 14px;
+        text-align: center;
+      }
+      .detect-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #33b7a3;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        z-index: 10;
+      }
+      .logo-text {
+        color: inherit; /* Inherit color from parent or set to your desired color */
+        text-decoration: none; /* Remove underline */
+      }
 
-.logo-text:hover {
-    text-decoration: underline; /* Optional: Add underline on hover */
-    color: yellowgreen; /* Optional: Change color on hover */
-}
+      .logo-text:hover {
+        text-decoration: underline; /* Optional: Add underline on hover */
+        color: yellowgreen; /* Optional: Change color on hover */
+      }
 
-        .detect-button:hover {
-            background-color: #c0392b;
-        }
-        .leaf {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>');
-            background-size: contain;
-            opacity: 0.3;
-            pointer-events: none;
-        }
+      .detect-button:hover {
+        background-color: #c0392b;
+      }
+      .leaf {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>');
+        background-size: contain;
+        opacity: 0.3;
+        pointer-events: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo">
-                <a href="/" class="logo-text">AgriAid</a>
-            </div>
-            <nav>
-                <a href="/profile" class="sidebar-link"><i class="bi bi-person"></i> Profile</a>
-                <a href="/market" class="sidebar-link"><i class="bi bi-shop"></i> Market</a>
-
-            </nav>
-            <div class="sidebar-footer">
-                <a href="/" class="sidebar-link"><i class="lni lni-exit"></i> Logout</a>
-            </div>
-        </aside>
-        <main class="main">
-            <form action="/submit" method="POST" enctype="multipart/form-data">
-                <div class="drop-zone">
-                    <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                    <input type="file" name="image" class="drop-zone__input" accept="image/*">
-                </div>
-                <button type="submit" class="detect-button">Detect Disease</button>
-            </form>
-        </main>
+      <aside class="sidebar">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt="PlantCare Logo"
+          />
+          <a href="/" class="logo-text">AgriAid</a>
+        </div>
+        <nav>
+          <a href="/profile" class="sidebar-link"
+            ><i class="bi bi-person"></i> Profile</a
+          >
+          <a href="/market" class="sidebar-link"
+            ><i class="bi bi-shop"></i> Market</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <a href="/" class="sidebar-link"
+            ><i class="lni lni-exit"></i> Logout</a
+          >
+        </div>
+      </aside>
+      <main class="main">
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+          <div class="drop-zone">
+            <span class="drop-zone__prompt"
+              >Drop file here or click to upload</span
+            >
+            <input
+              type="file"
+              name="image"
+              class="drop-zone__input"
+              accept="image/*"
+            />
+          </div>
+          <button type="submit" class="detect-button">Detect Disease</button>
+        </form>
+      </main>
     </div>
-    
+
     <script>
-        // File Upload Functionality
-        document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-            const dropZoneElement = inputElement.closest(".drop-zone");
+      // File Upload Functionality
+      document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+        const dropZoneElement = inputElement.closest(".drop-zone");
 
-            dropZoneElement.addEventListener("click", () => inputElement.click());
-            inputElement.addEventListener("change", () => {
-                if (inputElement.files.length) {
-                    updateThumbnail(dropZoneElement, inputElement.files[0]);
-                }
-            });
-
-            dropZoneElement.addEventListener("dragover", (e) => {
-                e.preventDefault();
-                dropZoneElement.classList.add("drop-zone--over");
-            });
-
-            ["dragleave", "dragend"].forEach((type) => {
-                dropZoneElement.addEventListener(type, () => {
-                    dropZoneElement.classList.remove("drop-zone--over");
-                });
-            });
-
-            dropZoneElement.addEventListener("drop", (e) => {
-                e.preventDefault();
-                if (e.dataTransfer.files.length) {
-                    inputElement.files = e.dataTransfer.files;
-                    updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-                }
-                dropZoneElement.classList.remove("drop-zone--over");
-            });
+        dropZoneElement.addEventListener("click", () => inputElement.click());
+        inputElement.addEventListener("change", () => {
+          if (inputElement.files.length) {
+            updateThumbnail(dropZoneElement, inputElement.files[0]);
+          }
         });
 
-        function updateThumbnail(dropZoneElement, file) {
-            let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-            if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-                dropZoneElement.querySelector(".drop-zone__prompt").remove();
-            }
-            if (!thumbnailElement) {
-                thumbnailElement = document.createElement("div");
-                thumbnailElement.classList.add("drop-zone__thumb");
-                dropZoneElement.appendChild(thumbnailElement);
-            }
-            thumbnailElement.dataset.label = file.name;
-            if (file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                    thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-                };
-            } else {
-                thumbnailElement.style.backgroundImage = null;
-            }
-        }
+        dropZoneElement.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropZoneElement.classList.add("drop-zone--over");
+        });
 
-        // Create falling leaves animation
-        function createLeaf() {
-            const leaf = document.createElement('div');
-            leaf.classList.add('leaf');
-            leaf.style.left = Math.random() * 100 + '%';
-            leaf.style.top = '-50px';
-            document.querySelector('.main').appendChild(leaf);
+        ["dragleave", "dragend"].forEach((type) => {
+          dropZoneElement.addEventListener(type, () => {
+            dropZoneElement.classList.remove("drop-zone--over");
+          });
+        });
 
-            gsap.to(leaf, {
-                y: '100vh',
-                x: (Math.random() - 0.5) * 200,
-                rotation: Math.random() * 360,
-                duration: Math.random() * 5 + 5,
-                ease: 'none',
-                onComplete: () => {
-                    leaf.remove();
-                    createLeaf();
-                }
-            });
-        }
+        dropZoneElement.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (e.dataTransfer.files.length) {
+            inputElement.files = e.dataTransfer.files;
+            updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+          }
+          dropZoneElement.classList.remove("drop-zone--over");
+        });
+      });
 
-        // Create multiple leaves
-        for (let i = 0; i < 20; i++) {
-            setTimeout(createLeaf, i * 500);
+      function updateThumbnail(dropZoneElement, file) {
+        let thumbnailElement =
+          dropZoneElement.querySelector(".drop-zone__thumb");
+        if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+          dropZoneElement.querySelector(".drop-zone__prompt").remove();
         }
+        if (!thumbnailElement) {
+          thumbnailElement = document.createElement("div");
+          thumbnailElement.classList.add("drop-zone__thumb");
+          dropZoneElement.appendChild(thumbnailElement);
+        }
+        thumbnailElement.dataset.label = file.name;
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+          };
+        } else {
+          thumbnailElement.style.backgroundImage = null;
+        }
+      }
+
+      // Create falling leaves animation
+      function createLeaf() {
+        const leaf = document.createElement("div");
+        leaf.classList.add("leaf");
+        leaf.style.left = Math.random() * 100 + "%";
+        leaf.style.top = "-50px";
+        document.querySelector(".main").appendChild(leaf);
+
+        gsap.to(leaf, {
+          y: "100vh",
+          x: (Math.random() - 0.5) * 200,
+          rotation: Math.random() * 360,
+          duration: Math.random() * 5 + 5,
+          ease: "none",
+          onComplete: () => {
+            leaf.remove();
+            createLeaf();
+          },
+        });
+      }
+
+      // Create multiple leaves
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createLeaf, i * 500);
+      }
     </script>
-</body>
+  </body>
 </html>
