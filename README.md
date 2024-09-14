@@ -1,6 +1,6 @@
 # AgriAid
 
-![AgriAid Logo](static/images/agriaid_logo.png)
+![AgriAid Logo](static\images\logo.svg)
 
 AgriAid is a cutting-edge web application designed to revolutionize plant care by leveraging artificial intelligence for disease identification and providing tailored supplement recommendations.
 
