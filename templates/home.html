@@ -1,186 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriAid - AI-Powered Plant Disease Detection</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    .hero-bg {
-      background-image: linear-gradient(45deg, #4CAF50, #8BC34A);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-    }
-
-    @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAid - AI-Powered Plant Disease Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .hero-bg {
+        background-image: linear-gradient(45deg, #4caf50, #8bc34a);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
       }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
 
-    .feature-card:hover {
-      transform: translateY(-0.5rem);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-  </style>
-</head>
-<body class="font-sans antialiased">
-  <header class="bg-white shadow-sm">
-    <div class="container mx-auto py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center">
-        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="PlantCare Logo" class="h-8 mr-2" style="height: 45px; width: auto;">
-        <span class="text-lg font-bold text-green-600">AgriAid</span>
-      </a>
-      <nav class="space-x-4">
-        <a href="#features" class="hover:text-green-600">Features</a>
-        <a href="#contact" class="hover:text-green-600">Contact Us</a>
-        <a href="/login" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Login/Signup</a>
-      </nav>
-    </div>
-  </header>
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
-  <main>
-    <section class="hero-bg text-white py-32">
-      <div class="container mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-4">AI-Powered Plant Disease Detection</h1>
-        <p class="text-xl mb-8">Keep your plants healthy with our advanced machine learning technology. Detect diseases early and get expert treatment recommendations.</p>
+      .feature-card:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <header class="bg-white shadow-sm">
+      <div class="container mx-auto py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+          <img
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt="PlantCare Logo"
+            class="h-8 mr-2"
+            style="height: 45px; width: auto"
+          />
+          <span class="text-lg font-bold text-green-600">AgriAid</span>
+        </a>
+        <nav class="space-x-4">
+          <a href="#features" class="hover:text-green-600">Features</a>
+          <a href="#contact" class="hover:text-green-600">Contact Us</a>
+          <a
+            href="/login"
+            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+            >Login/Signup</a
+          >
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section id="features" class="py-20">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">Our Features</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300">
-            <i class="fas fa-microscope text-green-600 text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Disease Detection</h3>
-            <p class="text-gray-600">Quickly identify plant diseases with our AI-powered image analysis.</p>
-          </div>
-          <div class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300">
-            <i class="fas fa-medkit text-green-600 text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Treatment Recommendations</h3>
-            <p class="text-gray-600">Get expert advice on how to treat and prevent plant diseases.</p>
-          </div>
-          <div class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300">
-            <i class="fas fa-seedling text-green-600 text-5xl mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Plant Care Tips</h3>
-            <p class="text-gray-600">Access a wealth of knowledge on general plant care and maintenance.</p>
+    <main>
+      <section class="hero-bg text-white py-32">
+        <div class="container mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-4">
+            AI-Powered Plant Disease Detection
+          </h1>
+          <p class="text-xl mb-8">
+            Keep your plants healthy with our advanced machine learning
+            technology. Detect diseases early and get expert treatment
+            recommendations.
+          </p>
+        </div>
+      </section>
+
+      <section id="features" class="py-20">
+        <div class="container mx-auto">
+          <h2 class="text-4xl font-bold mb-12 text-center">Our Features</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
+            >
+              <i class="fas fa-microscope text-green-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-2">Disease Detection</h3>
+              <p class="text-gray-600">
+                Quickly identify plant diseases with our AI-powered image
+                analysis.
+              </p>
+            </div>
+            <div
+              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
+            >
+              <i class="fas fa-medkit text-green-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-2">Treatment Recommendations</h3>
+              <p class="text-gray-600">
+                Get expert advice on how to treat and prevent plant diseases.
+              </p>
+            </div>
+            <div
+              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
+            >
+              <i class="fas fa-seedling text-green-600 text-5xl mb-4"></i>
+              <h3 class="text-2xl font-bold mb-2">Plant Care Tips</h3>
+              <p class="text-gray-600">
+                Access a wealth of knowledge on general plant care and
+                maintenance.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="bg-gray-100 py-20">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">Contact Us</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white shadow-md rounded-lg p-8">
-            <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
-            <form class="space-y-4">
-              <div>
-                <label for="name" class="block font-medium mb-1">Name</label>
-                <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" required>
-              </div>
-              <div>
-                <label for="email" class="block font-medium mb-1">Email</label>
-                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" required>
-              </div>
-              <div>
-                <label for="message" class="block font-medium mb-1">Message</label>
-                <textarea id="message" name="message" rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600" required></textarea>
-              </div>
-              <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700 transition-colors duration-300">Send Message</button>
-            </form>
-          </div>
-          <div class="bg-white shadow-md rounded-lg p-8">
-            <h3 class="text-2xl font-bold mb-4">Find Us</h3>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <i class="fas fa-envelope text-green-600 mr-4"></i>
+      <section id="contact" class="bg-gray-100 py-20">
+        <div class="container mx-auto">
+          <h2 class="text-4xl font-bold mb-12 text-center">Contact Us</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white shadow-md rounded-lg p-8">
+              <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
+              <form class="space-y-4">
                 <div>
-                  <h4 class="font-medium">Email</h4>
-                  <p>info@agriaid.com</p>
+                  <label for="name" class="block font-medium mb-1">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                    required
+                  />
                 </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-phone text-green-600 mr-4"></i>
                 <div>
-                  <h4 class="font-medium">Phone</h4>
-                  <p>(123) 456-7890</p>
+                  <label for="email" class="block font-medium mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                    required
+                  />
                 </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-green-600 mr-4"></i>
                 <div>
-                  <h4 class="font-medium">Address</h4>
-                  <p>123 Main Street, Anytown USA</p>
+                  <label for="message" class="block font-medium mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+                    required
+                  ></textarea>
                 </div>
-              </div>
-              <div class="flex space-x-4">
-                <a href="#" class="text-green-600 hover:text-green-700 transition-colors duration-300">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="text-green-600 hover:text-green-700 transition-colors duration-300">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="text-green-600 hover:text-green-700 transition-colors duration-300">
-                  <i class="fab fa-instagram"></i>
-                </a>
+                <button
+                  type="submit"
+                  class="bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700 transition-colors duration-300"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-8">
+              <h3 class="text-2xl font-bold mb-4">Find Us</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <i class="fas fa-envelope text-green-600 mr-4"></i>
+                  <div>
+                    <h4 class="font-medium">Email</h4>
+                    <p>info@agriaid.com</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-phone text-green-600 mr-4"></i>
+                  <div>
+                    <h4 class="font-medium">Phone</h4>
+                    <p>(123) 456-7890</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-map-marker-alt text-green-600 mr-4"></i>
+                  <div>
+                    <h4 class="font-medium">Address</h4>
+                    <p>123 Main Street, Anytown USA</p>
+                  </div>
+                </div>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
+                  >
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h4 class="text-lg font-bold mb-4">Services</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Disease Detection</a></li>
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">ML Model</a></li>
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Plant Care Tips</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-lg font-bold mb-4">About</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Company</a></li>
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Team</a></li>
-            <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Careers</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-lg font-bold mb-4">Contact Us</h4>
-          <p>Email: info@agriaid.com</p>
-          <p>Phone: (123) 456-7890</p>
-          <div class="flex space-x-4 mt-4">
-            <a href="#" class="text-green-400 hover:text-green-500 transition-colors duration-300">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="text-green-400 hover:text-green-500 transition-colors duration-300">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="text-green-400 hover:text-green-500 transition-colors duration-300">
-              <i class="fab fa-instagram"></i>
-            </a>
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-lg font-bold mb-4">Services</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >Disease Detection</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >ML Model</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >Plant Care Tips</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">About</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >Company</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >Team</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-green-400 transition-colors duration-300"
+                  >Careers</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+            <p>Email: info@agriaid.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <div class="flex space-x-4 mt-4">
+              <a
+                href="#"
+                class="text-green-400 hover:text-green-500 transition-colors duration-300"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-green-400 hover:text-green-500 transition-colors duration-300"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-green-400 hover:text-green-500 transition-colors duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
           </div>
         </div>
+        <div class="mt-8 text-center">
+          <p>&copy; 2024 agriaid. All rights reserved.</p>
+        </div>
       </div>
-      <div class="mt-8 text-center">
-        <p>&copy; 2024 agriaid. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
