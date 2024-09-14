@@ -54,37 +54,47 @@ AgriAid is a cutting-edge web application designed to revolutionize plant care b
 ## File Structure
 
 ```
-agriaid/
+🌱 AgriAid
 │
-├── app/
-│   ├── __init__.py
-│   ├── models.py
-│   ├── routes/
-│   │   ├── __init__.py
-│   │   ├── auth.py
-│   │   ├── main.py
-│   │   └── api.py
-│   ├── static/
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── images/
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── home.html
-│   │   ├── predict.html
-│   │   └── ...
-│   └── utils/
-│       ├── __init__.py
-│       └── helpers.py
+├─📁 app
+│ ├─🐍 __init__.py
+│ ├─🗄️ models.py
+│ │
+│ ├─📁 routes
+│ │ ├─🐍 __init__.py
+│ │ ├─🔐 auth.py
+│ │ ├─🌿 main.py
+│ │ └─🔌 api.py
+│ │
+│ ├─📁 static
+│ │ ├─🎨 css
+│ │ ├─💻 js
+│ │ └─🖼️ images
+│ │
+│ ├─📁 templates
+│ │ ├─🏗️ base.html
+│ │ ├─🏠 home.html
+│ │ ├─🔍 predict.html
+│ │ └─ ...
+│ │
+│ └─📁 utils
+│   ├─🐍 __init__.py
+│   └─🛠️ helpers.py
 │
-├── migrations/
-├── tests/
-├── venv/
-├── .gitignore
-├── config.py
-├── requirements.txt
-├── run.py
-└── README.md
+├─📁 migrations
+├─🧪 tests
+├─🌐 venv
+├─🙈 .gitignore
+├─⚙️ config.py
+├─📋 requirements.txt
+├─🏃 run.py
+└─📘 README.md
+
+🔑 Legend:
+📁 Folder    🐍 Python     🗄️ Database  🔐 Auth
+🌿 Routes    🔌 API        🎨 CSS       💻 JavaScript
+🖼️ Images    🏗️ Templates  🧪 Tests     🌐 Virt Env
+⚙️ Config    📋 Deps       🏃 Runner    📘 Docs
 ```
 
 ## Contributing
