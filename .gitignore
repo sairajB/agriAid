@@ -2,4 +2,3 @@ plant_disease_model_1_latest.pt
 venv/
 __pycache__/
 static/uploads/
-test_images/
