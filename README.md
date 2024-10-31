@@ -110,7 +110,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For support, feedback, or inquiries, please contact us:
 
 - **Email**: sairaj.sab@gmail.com
-- 
 ---
 
 Made with 💚 by the AgriAid Team
