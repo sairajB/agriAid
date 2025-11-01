@@ -17,84 +17,76 @@ AgriAid is a cutting-edge web application designed to revolutionize plant care b
 
 ## Features
 
-- **🔐 User Authentication**: Secure signup and login functionality.
-- **🔍 AI-Powered Disease Prediction**: Utilizes a state-of-the-art Convolutional Neural Network (CNN) to predict plant diseases from uploaded images.
-- **💊 Smart Supplement Recommendations**: Provides tailored information and purchase links for plant care supplements based on identified diseases.
-- **👤 Personalized User Profiles**: Manage your profile and maintain a detailed plant care journal.
+- ** AI-Powered Disease Prediction**: Utilizes a state-of-the-art Convolutional Neural Network (CNN) to predict plant diseases from uploaded images with 95%+ accuracy.
+- **💊 Smart Supplement Recommendations**: Provides tailored information and direct purchase links for plant care supplements based on identified diseases.
+- **🎨 Modern, Responsive Design**: Beautiful, consistent UI with smooth animations and glassmorphism effects across all pages.
 - **📝 Interactive Contact Form**: Easy-to-use form for submitting queries or feedback.
-- **🛒 Integrated Marketplace**: Browse and purchase recommended plant care products seamlessly.
+- **🛒 Integrated Marketplace**: Browse and purchase recommended fertilizers and treatment supplements seamlessly.
+- **⚡ Fast & Lightweight**: Optimized performance with minimal dependencies for quick load times.
 
 ## Technology Stack
 
 - **Backend**: Python, Flask
-- **Frontend**: HTML, CSS, JavaScript
-- **Database**: MySQL
-- **Machine Learning**: PyTorch (CNN model)
-- **Authentication**: Flask-Login
-- **Form Handling**: Flask-WTF
-- **ORM**: Flask-SQLAlchemy
+- **Frontend**: HTML5, CSS3 (Tailwind CSS), JavaScript (GSAP Animations)
+- **Machine Learning**: PyTorch (CNN model for disease classification)
+- **Image Processing**: PIL (Pillow), torchvision
+- **Data Processing**: Pandas, NumPy
+- **Deployment**: Gunicorn
 
 ## Usage
 
-1. **Home Page**: Visit the landing page to explore main features and navigate the app.
-2. **Sign Up/Login**: Create an account or log in to access personalized features.
-3. **Disease Prediction**:
-   - Navigate to the "Predict" page.
-   - Upload a clear image of the affected plant part.
-   - Receive an AI-generated diagnosis and care recommendations.
+1. **Home Page**: Visit the landing page to explore features and learn about AgriAid's capabilities.
+2. **Disease Detection**:
+   - Click "Get Started" to navigate to the detection page.
+   - Upload a clear image of the affected plant (supports drag & drop).
+   - Receive instant AI-generated diagnosis with treatment recommendations.
+3. **View Results**:
+   - See detailed disease information and prevention tips.
+   - Get personalized supplement recommendations.
+   - Click "Buy Product" to purchase recommended treatments.
 4. **Marketplace**:
-   - Browse the "Market" section for recommended supplements.
-   - Add items to cart and proceed to checkout.
-5. **User Profile**:
-   - Update personal information.
-   - View and manage your plant care journal.
-   - Track order history and saved predictions.
-6. **Contact**: Use the contact form for support or feedback.
+   - Browse fertilizers for healthy plants and supplements for disease treatment.
+   - Filter by plant disease type.
+   - Direct purchase links to verified suppliers.
+5. **Contact**: Use the modern contact form for support, questions, or feedback.
 
 ## File Structure
 
 ```
 🌱 AgriAid
 │
-├─📁 app
-│ ├─🐍 __init__.py
-│ ├─🗄️ models.py
-│ │
-│ ├─📁 routes
-│ │ ├─🐍 __init__.py
-│ │ ├─🔐 auth.py
-│ │ ├─🌿 main.py
-│ │ └─🔌 api.py
-│ │
-│ ├─📁 static
-│ │ ├─🎨 css
-│ │ ├─💻 js
-│ │ └─🖼️ images
-│ │
-│ ├─📁 templates
-│ │ ├─🏗️ base.html
-│ │ ├─🏠 home.html
-│ │ ├─🔍 predict.html
-│ │ └─ ...
-│ │
-│ └─📁 utils
-│   ├─🐍 __init__.py
-│   └─🛠️ helpers.py
+├─� app.py                    # Main Flask application
+├─🤖 CNN.py                    # CNN model architecture
+├─🎯 plant_disease_model_1_latest.pt  # Trained model weights
+├─� disease_info.csv          # Disease descriptions & prevention
+├─� supplement_info.csv       # Product recommendations
+├─� requirements.txt          # Python dependencies
+├─📘 README.md                 # Documentation
 │
-├─📁 migrations
-├─🧪 tests
-├─🌐 venv
-├─🙈 .gitignore
-├─⚙️ config.py
-├─📋 requirements.txt
-├─🏃 run.py
-└─📘 README.md
+├─📁 static
+│ ├─🎨 styles
+│ │ ├─ style_home.css         # Home page styles
+│ │ ├─ sidebar.css            # Sidebar component styles
+│ │ ├─ modern.css             # Modern UI utilities
+│ │ └─ login_signup.css       # Form styles
+│ ├─� js
+│ │ └─ script.js              # Frontend interactions
+│ ├─🖼️ images
+│ │ └─ logo.svg               # AgriAid branding
+│ └─� uploads                # User-uploaded images
+│
+└─📁 templates                 # HTML templates
+  ├─� home.html              # Landing page
+  ├─� main.html              # Disease detection page
+  ├─📊 submit.html            # Results display
+  ├─� market.html            # Product marketplace
+  └─� contact.html           # Contact form
 
 🔑 Legend:
-📁 Folder    🐍 Python     🗄️ Database  🔐 Auth
-🌿 Routes    🔌 API        🎨 CSS       💻 JavaScript
-🖼️ Images    🏗️ Templates  🧪 Tests     🌐 Virt Env
-⚙️ Config    📋 Deps       🏃 Runner    📘 Docs
+📁 Folder    � Python File   🤖 ML Model   🎯 Weights
+� Data      � Products      📋 Config     📘 Docs
+🎨 CSS       💻 JavaScript    🖼️ Images     📤 Uploads
+🏠 Pages     🔍 Detection     � Results    � Shop
 ```
 
 ## Contributing
@@ -110,6 +102,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For support, feedback, or inquiries, please contact us:
 
 - **Email**: sairaj.sab@gmail.com
+
 ---
 
 Made with 💚 by the AgriAid Team

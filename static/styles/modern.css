@@ -1,0 +1,191 @@
+/* Modern, Consistent Styling for AgriAid */
+
+/* Color Variables */
+:root {
+  --primary-color: #2d6a4f;
+  --primary-dark: #1b4332;
+  --secondary-color: #40916c;
+  --accent-color: #52b788;
+  --light-green: #95d5b2;
+  --background-light: #d8f3dc;
+  --background-lighter: #b7e4c7;
+  --text-dark: #1b4332;
+  --text-gray: #6b7280;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(45, 106, 79, 0.2);
+  --shadow-xl: 0 12px 40px rgba(45, 106, 79, 0.25);
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utilities */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient Backgrounds */
+.gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-color) 100%
+  );
+}
+
+.gradient-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 50%,
+    var(--accent-color) 100%
+  );
+}
+
+/* Button Styles */
+.btn-modern {
+  display: inline-block;
+  padding: 12px 28px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-color) 100%
+  );
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--accent-color) 100%
+  );
+  color: var(--white);
+}
+
+/* Card Styles */
+.card-modern {
+  background: var(--white);
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary-color);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design Utilities */
+@media (max-width: 768px) {
+  .btn-modern {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .card-modern {
+    padding: 16px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Focus Styles for Accessibility */
+*:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
