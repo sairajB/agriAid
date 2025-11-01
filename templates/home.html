@@ -3,301 +3,767 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgriAid - AI-Powered Plant Disease Detection</title>
+    <title>AgriAid - Smart Plant Health Solutions</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+      href="{{ url_for('static', filename='styles/enhancements.css') }}" />
     <style>
-      .hero-bg {
-        background-image: linear-gradient(45deg, #4caf50, #8bc34a);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
       }
 
-      @keyframes gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0a0e27;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Floating Navbar */
+      .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 12px 30px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-section img {
+        height: 35px;
+        filter: brightness(0) invert(1);
+      }
+
+      .logo-text {
+        font-weight: 700;
+        font-size: 20px;
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4ade80, #22d3ee);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        color: #0a0e27;
+        padding: 10px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(74, 222, 128, 0.5);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(ellipse at top, #1e3a8a 0%, #0a0e27 50%);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(74, 222, 128, 0.15),
+          transparent 70%
+        );
+        top: -400px;
+        right: -400px;
+        border-radius: 50%;
+        animation: float 20s infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(34, 211, 238, 0.15),
+          transparent 70%
+        );
+        bottom: -300px;
+        left: -300px;
+        border-radius: 50%;
+        animation: float 15s infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
         100% {
-          background-position: 0% 50%;
+          transform: translate(0, 0) rotate(0deg);
         }
+        33% {
+          transform: translate(30px, -30px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(240deg);
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 10;
+        max-width: 900px;
+        padding: 0 20px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        padding: 8px 20px;
+        border-radius: 30px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: #4ade80;
+        font-weight: 500;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #fff 0%, #4ade80 50%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 40px;
+        line-height: 1.6;
+        animation: fadeInUp 1s ease 0.2s backwards;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        animation: fadeInUp 1s ease 0.4s backwards;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        color: #0a0e27;
+        padding: 16px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        box-shadow: 0 8px 30px rgba(74, 222, 128, 0.4);
+        border: none;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(74, 222, 128, 0.6);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        padding: 16px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Features Section */
+      .features {
+        padding: 120px 20px;
+        background: #0a0e27;
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff, #4ade80);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 60px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(74, 222, 128, 0.1),
+          rgba(34, 211, 238, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+
+      .feature-card:hover::before {
+        opacity: 1;
       }
 
       .feature-card:hover {
-        transform: translateY(-0.5rem);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transform: translateY(-10px);
+        border-color: rgba(74, 222, 128, 0.3);
+        box-shadow: 0 20px 60px rgba(74, 222, 128, 0.2);
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-card h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-card p {
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Stats Section */
+      .stats {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, #1e3a8a 0%, #0a0e27 100%);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 56px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 20px;
+        text-align: center;
+        background: #0a0e27;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #fff, #4ade80);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .cta-section p {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 40px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(255, 255, 255, 0.03);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 60px 20px 30px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #4ade80;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-section a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .footer-section a:hover {
+        color: #4ade80;
+        padding-left: 5px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        border-color: transparent;
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 10px 20px;
+          gap: 20px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 42px;
+        }
+
+        .hero p {
+          font-size: 16px;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
       }
     </style>
   </head>
-  <body class="font-sans antialiased">
-    <header class="bg-white shadow-sm">
-      <div class="container mx-auto py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center">
-          <img
-            src="{{ url_for('static', filename='images/logo.svg') }}"
-            alt="PlantCare Logo"
-            class="h-8 mr-2"
-            style="height: 45px; width: auto"
-          />
-          <span class="text-lg font-bold text-green-600">AgriAid</span>
-        </a>
-        <nav class="space-x-4">
-          <a href="#features" class="hover:text-green-600">Features</a>
-          <a href="#contact" class="hover:text-green-600">Contact Us</a>
-          <a
-            href="/login"
-            class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
-            >Login/Signup</a
-          >
-        </nav>
+  <body>
+    <!-- Floating Navigation -->
+    <nav class="navbar">
+      <div class="logo-section">
+        <img
+          src="{{ url_for('static', filename='images/logo.svg') }}"
+          alt="AgriAid Logo" />
+        <span class="logo-text">AgriAid</span>
       </div>
-    </header>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#stats">Impact</a></li>
+        <li><a href="#cta">Get Started</a></li>
+      </ul>
+      <a href="/main" class="nav-cta">Launch App →</a>
+    </nav>
 
-    <main>
-      <section class="hero-bg text-white py-32">
-        <div class="container mx-auto text-center">
-          <h1 class="text-5xl font-bold mb-4">
-            AI-Powered Plant Disease Detection
-          </h1>
-          <p class="text-xl mb-8">
-            Keep your plants healthy with our advanced machine learning
-            technology. Detect diseases early and get expert treatment
-            recommendations.
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">🌱 AI-Powered Plant Health</div>
+        <h1>Protect Your Plants<br />With Intelligence</h1>
+        <p>
+          Advanced machine learning technology that identifies plant diseases in
+          seconds. Get instant diagnoses, treatment plans, and expert care
+          recommendations.
+        </p>
+        <div class="hero-buttons">
+          <a href="/main" class="btn-primary">Start Detection</a>
+          <a href="#features" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2 class="section-title">Powerful Features</h2>
+      <p class="section-subtitle">
+        Everything you need to keep your plants healthy and thriving
+      </p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI Disease Detection</h3>
+          <p>
+            State-of-the-art neural networks analyze plant images to identify
+            diseases with 95%+ accuracy in under 3 seconds.
           </p>
         </div>
-      </section>
-
-      <section id="features" class="py-20">
-        <div class="container mx-auto">
-          <h2 class="text-4xl font-bold mb-12 text-center">Our Features</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
-            >
-              <i class="fas fa-microscope text-green-600 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold mb-2">Disease Detection</h3>
-              <p class="text-gray-600">
-                Quickly identify plant diseases with our AI-powered image
-                analysis.
-              </p>
-            </div>
-            <div
-              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
-            >
-              <i class="fas fa-medkit text-green-600 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold mb-2">Treatment Recommendations</h3>
-              <p class="text-gray-600">
-                Get expert advice on how to treat and prevent plant diseases.
-              </p>
-            </div>
-            <div
-              class="bg-white shadow-md rounded-lg p-8 feature-card transition-all duration-300"
-            >
-              <i class="fas fa-seedling text-green-600 text-5xl mb-4"></i>
-              <h3 class="text-2xl font-bold mb-2">Plant Care Tips</h3>
-              <p class="text-gray-600">
-                Access a wealth of knowledge on general plant care and
-                maintenance.
-              </p>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-prescription-bottle"></i>
           </div>
+          <h3>Treatment Plans</h3>
+          <p>
+            Receive customized treatment recommendations with step-by-step
+            instructions to nurse your plants back to health.
+          </p>
         </div>
-      </section>
-
-      <section id="contact" class="bg-gray-100 py-20">
-        <div class="container mx-auto">
-          <h2 class="text-4xl font-bold mb-12 text-center">Contact Us</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white shadow-md rounded-lg p-8">
-              <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
-              <form class="space-y-4">
-                <div>
-                  <label for="name" class="block font-medium mb-1">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="email" class="block font-medium mb-1"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="message" class="block font-medium mb-1"
-                    >Message</label
-                  >
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
-                    required
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="bg-green-600 text-white px-6 py-3 rounded-md font-medium hover:bg-green-700 transition-colors duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-            <div class="bg-white shadow-md rounded-lg p-8">
-              <h3 class="text-2xl font-bold mb-4">Find Us</h3>
-              <div class="space-y-4">
-                <div class="flex items-start">
-                  <i class="fas fa-envelope text-green-600 mr-4"></i>
-                  <div>
-                    <h4 class="font-medium">Email</h4>
-                    <p>info@agriaid.com</p>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <i class="fas fa-phone text-green-600 mr-4"></i>
-                  <div>
-                    <h4 class="font-medium">Phone</h4>
-                    <p>(123) 456-7890</p>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <i class="fas fa-map-marker-alt text-green-600 mr-4"></i>
-                  <div>
-                    <h4 class="font-medium">Address</h4>
-                    <p>123 Main Street, Anytown USA</p>
-                  </div>
-                </div>
-                <div class="flex space-x-4">
-                  <a
-                    href="#"
-                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
-                  >
-                    <i class="fab fa-facebook-f"></i>
-                  </a>
-                  <a
-                    href="#"
-                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
-                  >
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <a
-                    href="#"
-                    class="text-green-600 hover:text-green-700 transition-colors duration-300"
-                  >
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
           </div>
+          <h3>Progress Tracking</h3>
+          <p>
+            Monitor your plant's recovery journey with detailed insights and
+            timeline tracking for optimal care.
+          </p>
         </div>
-      </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h4 class="text-lg font-bold mb-4">Services</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >Disease Detection</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >ML Model</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >Plant Care Tips</a
-                >
-              </li>
-            </ul>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
           </div>
-          <div>
-            <h4 class="text-lg font-bold mb-4">About</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >Company</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >Team</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="hover:text-green-400 transition-colors duration-300"
-                  >Careers</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-lg font-bold mb-4">Contact Us</h4>
-            <p>Email: info@agriaid.com</p>
-            <p>Phone: (123) 456-7890</p>
-            <div class="flex space-x-4 mt-4">
-              <a
-                href="#"
-                class="text-green-400 hover:text-green-500 transition-colors duration-300"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                class="text-green-400 hover:text-green-500 transition-colors duration-300"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="text-green-400 hover:text-green-500 transition-colors duration-300"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-          </div>
+          <h3>Expert Care Tips</h3>
+          <p>
+            Access a comprehensive knowledge base of plant care guides,
+            prevention strategies, and maintenance tips.
+          </p>
         </div>
-        <div class="mt-8 text-center">
-          <p>&copy; 2024 agriaid. All rights reserved.</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <h3>Product Marketplace</h3>
+          <p>
+            Shop curated fertilizers, supplements, and treatments recommended
+            specifically for your plant's needs.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile Friendly</h3>
+          <p>
+            Snap photos and get diagnoses anywhere. Works seamlessly across all
+            your devices, anytime.
+          </p>
         </div>
       </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Accuracy Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">39+</div>
+          <div class="stat-label">Disease Types</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3s</div>
+          <div class="stat-label">Analysis Time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Available</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+      <h2>Ready to Save Your Plants?</h2>
+      <p>
+        Join thousands of gardeners and farmers using AI to maintain healthier,
+        more productive plants. Get started in seconds.
+      </p>
+      <a href="/main" class="btn-primary">Try It Now - It's Free</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/main">Disease Detection</a></li>
+            <li><a href="/market">Marketplace</a></li>
+            <li><a href="#features">Features</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AgriAid. All rights reserved.</p>
+      </div>
     </footer>
+
+    <script>
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }, index * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe feature cards
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".feature-card").forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          card.style.transition = "all 0.6s ease";
+          observer.observe(card);
+        });
+
+        document.querySelectorAll(".stat-item").forEach((item) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateY(30px)";
+          item.style.transition = "all 0.6s ease";
+          observer.observe(item);
+        });
+      });
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          navbar.style.background = "rgba(10, 14, 39, 0.9)";
+          navbar.style.backdropFilter = "blur(20px)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.05)";
+          navbar.style.backdropFilter = "blur(20px)";
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
   </body>
 </html>

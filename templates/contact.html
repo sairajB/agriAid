@@ -4,22 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
+    <title>Contact Us - AgriAid</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles/login_signup.css') }}"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='images/logo.svg') }}"
-      type="image/x-icon"
-    />
+      type="image/x-icon" />
+    <style>
+      body {
+        background: linear-gradient(135deg, #d8f3dc 0%, #b7e4c7 100%);
+        min-height: 100vh;
+      }
+      .contact-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(45, 106, 79, 0.2);
+        overflow: hidden;
+      }
+      .form-input {
+        transition: all 0.3s ease;
+      }
+      .form-input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(45, 106, 79, 0.2);
+      }
+    </style>
   </head>
 
   <body>
@@ -39,26 +55,24 @@
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
           class="me-5 collapse navbar-collapse justify-content-end"
-          id="navbarNavDropdown "
-        >
+          id="navbarNavDropdown ">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="/login" class="btn btn-outline-success" role="button"
-                >Login/Signup</a
+              <a href="/main" class="btn btn-outline-success" role="button"
+                >Get Started</a
               >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link text-secondary" href="#">Features</a>
+              <a class="nav-link text-secondary" href="/#features">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary" href="#">Contact Us</a>
+              <a class="nav-link text-secondary" href="/#contact">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -71,24 +85,22 @@
             type="email"
             placeholder="Enter Email..."
             name="email"
-            class="form-control"
-          />
+            class="form-control" />
         </div>
         <div class="mb-3">
           <textarea
             class="form-control"
+            name="message"
             id="exampleFormControlTextarea1"
             rows="3"
-            placeholder="Your Message..."
-          ></textarea>
+            placeholder="Your Message..."></textarea>
         </div>
         <div class="form-btn">
           <input
             type="submit"
             value="Send Your Message"
             name="submit"
-            class="btn btn-outline-success"
-          />
+            class="btn btn-outline-success" />
         </div>
       </form>
     </div>

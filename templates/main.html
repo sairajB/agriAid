@@ -5,66 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriAid - Detect Disease</title>
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/enhancements.css') }}" />
     <style>
-      body,
-      html {
+      * {
         margin: 0;
         padding: 0;
-        font-family: "Arial", sans-serif;
-        height: 100%;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0a0e27;
+        color: #fff;
         overflow: hidden;
       }
+
       .wrapper {
         display: flex;
-        height: 100%;
+        height: 100vh;
       }
+
+      /* Sidebar */
       .sidebar {
-        width: 250px;
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        padding: 20px;
+        width: 280px;
+        background: rgba(255, 255, 255, 0.03);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px 20px;
         display: flex;
         flex-direction: column;
       }
+
       .logo {
         display: flex;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+        gap: 12px;
       }
+
       .logo img {
         width: 40px;
         height: 40px;
-        margin-right: 10px;
+        filter: brightness(0) invert(1);
       }
-      .logo h1 {
+
+      .logo-text {
         font-size: 24px;
-        margin: 0;
-      }
-      .sidebar-link {
-        color: #ecf0f1;
+        font-weight: 700;
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-decoration: none;
-        padding: 10px 0;
-        display: block;
-        transition: 0.3s;
       }
+
+      .sidebar-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
       .sidebar-link:hover {
-        color: #3498db;
+        background: rgba(74, 222, 128, 0.1);
+        color: #4ade80;
+        transform: translateX(5px);
       }
+
+      .sidebar-link i {
+        margin-right: 12px;
+        font-size: 20px;
+      }
+
       .sidebar-footer {
         margin-top: auto;
       }
+
+      /* Main Content */
       .main {
-        flex-grow: 1;
-        background: linear-gradient(135deg, #43cea2, #185a9d);
+        flex: 1;
+        background: radial-gradient(
+          ellipse at top right,
+          #1e3a8a 0%,
+          #0a0e27 50%
+        );
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -72,85 +106,222 @@
         position: relative;
         overflow: hidden;
       }
+
+      .main::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(74, 222, 128, 0.1),
+          transparent 70%
+        );
+        top: -300px;
+        right: -300px;
+        border-radius: 50%;
+        animation: float 15s infinite;
+      }
+
+      .main::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(34, 211, 238, 0.1),
+          transparent 70%
+        );
+        bottom: -250px;
+        left: -250px;
+        border-radius: 50%;
+        animation: float 20s infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -30px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(240deg);
+        }
+      }
+
+      .upload-section {
+        text-align: center;
+        z-index: 10;
+      }
+
+      .upload-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #fff, #4ade80);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .upload-subtitle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 40px;
+      }
+
       .drop-zone {
-        border: 2px dashed #ffffff;
+        border: 2px dashed rgba(74, 222, 128, 0.4);
         border-radius: 20px;
-        width: 300px;
-        height: 200px;
+        width: 500px;
+        height: 350px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: 0.3s;
-        background-color: rgba(255, 255, 255, 0.1);
-        z-index: 10;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
         position: relative;
+        overflow: hidden;
       }
+
+      .drop-zone::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(74, 222, 128, 0.05),
+          rgba(34, 211, 238, 0.05)
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+
+      .drop-zone:hover::before {
+        opacity: 1;
+      }
+
       .drop-zone:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        border-color: #4ade80;
+        transform: translateY(-5px);
+        box-shadow: 0 20px 60px rgba(74, 222, 128, 0.2);
       }
+
+      .drop-zone.drag-over {
+        border-color: #22d3ee;
+        background: rgba(34, 211, 238, 0.1);
+        transform: scale(1.02);
+      }
+
       .drop-zone__prompt {
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.7);
         font-size: 18px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        z-index: 1;
       }
+
+      .drop-zone__prompt i {
+        font-size: 48px;
+        color: #4ade80;
+        margin-bottom: 10px;
+      }
+
       .drop-zone__input {
         display: none;
       }
+
       .drop-zone__thumb {
         width: 100%;
         height: 100%;
-        border-radius: 10px;
+        border-radius: 18px;
         overflow: hidden;
-        background-color: #cccccc;
         background-size: cover;
+        background-position: center;
         position: relative;
       }
+
       .drop-zone__thumb::after {
         content: attr(data-label);
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 5px 0;
+        padding: 12px;
         color: #ffffff;
-        background: rgba(0, 0, 0, 0.75);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
         font-size: 14px;
         text-align: center;
       }
+
       .detect-button {
-        margin-top: 20px;
-        padding: 10px 20px;
+        margin-top: 40px;
+        padding: 16px 50px;
         font-size: 18px;
-        background-color: #33b7a3;
-        color: #ffffff;
+        font-weight: 600;
+        background: linear-gradient(135deg, #4ade80, #22d3ee);
+        color: #0a0e27;
         border: none;
-        border-radius: 5px;
+        border-radius: 12px;
         cursor: pointer;
-        transition: 0.3s;
-        z-index: 10;
-      }
-      .logo-text {
-        color: inherit; /* Inherit color from parent or set to your desired color */
-        text-decoration: none; /* Remove underline */
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 30px rgba(74, 222, 128, 0.4);
+        position: relative;
+        overflow: hidden;
       }
 
-      .logo-text:hover {
-        text-decoration: underline; /* Optional: Add underline on hover */
-        color: yellowgreen; /* Optional: Change color on hover */
+      .detect-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .detect-button:hover::before {
+        width: 400px;
+        height: 400px;
       }
 
       .detect-button:hover {
-        background-color: #c0392b;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(74, 222, 128, 0.6);
       }
-      .leaf {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>');
-        background-size: contain;
-        opacity: 0.3;
-        pointer-events: none;
+
+      .detect-button:active {
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 768px) {
+        .wrapper {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .drop-zone {
+          width: 90vw;
+          height: 300px;
+        }
       }
     </style>
   </head>
@@ -160,39 +331,44 @@
         <div class="logo">
           <img
             src="{{ url_for('static', filename='images/logo.svg') }}"
-            alt="PlantCare Logo"
-          />
+            alt="AgriAid Logo" />
           <a href="/" class="logo-text">AgriAid</a>
         </div>
         <nav>
-          <a href="/profile" class="sidebar-link"
-            ><i class="bi bi-person"></i> Profile</a
-          >
-          <a href="/market" class="sidebar-link"
-            ><i class="bi bi-shop"></i> Market</a
-          >
+          <a href="/market" class="sidebar-link">
+            <i class="bi bi-shop"></i> Market
+          </a>
         </nav>
         <div class="sidebar-footer">
-          <a href="/" class="sidebar-link"
-            ><i class="lni lni-exit"></i> Logout</a
-          >
+          <a href="/" class="sidebar-link">
+            <i class="bi bi-house-door"></i> Back to Home
+          </a>
         </div>
       </aside>
       <main class="main">
-        <form action="/submit" method="POST" enctype="multipart/form-data">
-          <div class="drop-zone">
-            <span class="drop-zone__prompt"
-              >Drop file here or click to upload</span
-            >
-            <input
-              type="file"
-              name="image"
-              class="drop-zone__input"
-              accept="image/*"
-            />
-          </div>
-          <button type="submit" class="detect-button">Detect Disease</button>
-        </form>
+        <div class="upload-section">
+          <h1 class="upload-title">Detect Plant Disease</h1>
+          <p class="upload-subtitle">
+            Upload an image to identify diseases with AI
+          </p>
+          <form action="/submit" method="POST" enctype="multipart/form-data">
+            <div class="drop-zone">
+              <span class="drop-zone__prompt">
+                <i class="bi bi-cloud-upload"></i>
+                <div>Drop file here or click to upload</div>
+                <small style="color: rgba(255, 255, 255, 0.5)"
+                  >Supported formats: JPG, PNG</small
+                >
+              </span>
+              <input
+                type="file"
+                name="image"
+                class="drop-zone__input"
+                accept="image/*" />
+            </div>
+            <button type="submit" class="detect-button">Analyze Plant</button>
+          </form>
+        </div>
       </main>
     </div>
 
@@ -210,12 +386,12 @@
 
         dropZoneElement.addEventListener("dragover", (e) => {
           e.preventDefault();
-          dropZoneElement.classList.add("drop-zone--over");
+          dropZoneElement.classList.add("drag-over");
         });
 
         ["dragleave", "dragend"].forEach((type) => {
           dropZoneElement.addEventListener(type, () => {
-            dropZoneElement.classList.remove("drop-zone--over");
+            dropZoneElement.classList.remove("drag-over");
           });
         });
 
@@ -225,7 +401,7 @@
             inputElement.files = e.dataTransfer.files;
             updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
           }
-          dropZoneElement.classList.remove("drop-zone--over");
+          dropZoneElement.classList.remove("drag-over");
         });
       });
 
@@ -250,32 +426,6 @@
         } else {
           thumbnailElement.style.backgroundImage = null;
         }
-      }
-
-      // Create falling leaves animation
-      function createLeaf() {
-        const leaf = document.createElement("div");
-        leaf.classList.add("leaf");
-        leaf.style.left = Math.random() * 100 + "%";
-        leaf.style.top = "-50px";
-        document.querySelector(".main").appendChild(leaf);
-
-        gsap.to(leaf, {
-          y: "100vh",
-          x: (Math.random() - 0.5) * 200,
-          rotation: Math.random() * 360,
-          duration: Math.random() * 5 + 5,
-          ease: "none",
-          onComplete: () => {
-            leaf.remove();
-            createLeaf();
-          },
-        });
-      }
-
-      // Create multiple leaves
-      for (let i = 0; i < 20; i++) {
-        setTimeout(createLeaf, i * 500);
       }
     </script>
   </body>
