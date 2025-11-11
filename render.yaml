@@ -2,8 +2,9 @@ services:
   - type: web
     name: agriaid
     runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn app:app --timeout 120 --workers 1
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
